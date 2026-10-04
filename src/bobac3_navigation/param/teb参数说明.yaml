@@ -109,7 +109,7 @@ TebLocalPlannerROS:
 
  # GoalTolerance  
   # 距离允许误差
-  xy_goal_tolerance: 0.1
+  xy_goal_tolerance: 0.02 # 0.1
   # 角度允许误差
   yaw_goal_tolerance: 0.05
   # 自由目标速度

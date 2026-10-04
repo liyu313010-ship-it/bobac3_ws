@@ -1,5 +1,9 @@
-build/
+﻿build/
 devel/
-src/CMakeLists.txt
-.catkin_workspace
-.vscode/
+*.tar.xz
+*.tar.gz
+parambkbk/
+.reinovo/
+face_data/
+__pycache__/
+*.pyc

@@ -1,11 +1,10 @@
 DWAPlannerROS:
 
 # Robot Configuration Parameters
-  max_vel_x: 0.4  # 0.55
-  min_vel_x: -0.4 
-
-  max_vel_y: 0.4  # omni drive robot
-  min_vel_y: -0.4  # omni drive robot
+  max_vel_x: 1  # 0.55
+  min_vel_x: 0.3
+  max_vel_y: 0  # omni drive robot
+  min_vel_y: 0  # omni drive robot
 
   # 机器人在执行运动时允许的最大,最小线速度（平移速度）
   # 它用于限制机器人的最大移动速度，以确保在规划路径和避障过程中机器人的运动保持在安全范围内
@@ -28,9 +27,9 @@ DWAPlannerROS:
   acc_lim_trans: 0.3
 # Goal Tolerance Parameters
 
-  yaw_goal_tolerance: 0.05  # 控制器靠近给定路径的权重，及贴合全局路径的权重
-  xy_goal_tolerance: 0.15  # 控制器尝试达到其本地目标and控制着速度的权重
-  # latch_xy_goal_tolerance: false
+  yaw_goal_tolerance: 0.3  # 控制器靠近给定路径的权重，及贴合全局路径的权重
+  xy_goal_tolerance: 0.15  # 控制器尝试达到其本地目标and控制着速度的权重 0.15
+  # latch_xy_goal_tolerance: true  #原来是加注释的，false
 
 # Forward Simulation Parameters
   sim_time: 1.5       # 1.7
@@ -77,9 +76,9 @@ DWAPlannerROS:
   oscillation_reset_dist: 0.05  # 0.05   - how far to travel before resetting oscillation flags
   oscillation_reset_angle: 0.2
 # Debugging
-  publish_traj_pc : fasle
-  publish_cost_grid_pc: fasle
-  global_frame_id: odom
+  publish_traj_pc : false
+  publish_cost_grid_pc: false
+  global_frame_id: map # odom
 
 # Differential-drive robot configuration - necessary?
 #  holonomic_robot: false

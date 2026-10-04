@@ -1,9 +1,15 @@
 <launch>
 	<arg name="open_nav_rviz" default="true"/>
-	<arg name="map_file_name" default="home"/>
+	<arg name="map_file_name" default="D123map"/>
 	<arg name="location_method" default="amcl" 
 				doc="location type [amcl, cartographer]"/>
 	<arg name="map_directory" default="$(env MAP_DIRECTORY)"/>
+	<!-- 国赛沿用省赛地图原点和定位框。
+	     AMCL 原默认 (0,0,0) 与实际出发点相差约 14cm，窄通道中会被
+	     TEB 判定为起步碰撞。在启动时直接使用已标定的出发点。 -->
+	<arg name="initial_pose_x" default="-0.0914"/>
+	<arg name="initial_pose_y" default="-0.1117"/>
+	<arg name="initial_pose_a" default="0.0199"/>
 	<!--bobac3 model description-->
 	<include file="$(find bobac3_description)/launch/display.launch">
 		<arg name="open_rviz" value="false"/>
@@ -22,6 +28,9 @@
 	<!--location-->
 	<include file="$(find bobac3_navigation)/launch/$(arg location_method).launch">
 	 <arg name="map_file" value="$(arg map_file_name)"/>
+	 <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
+	 <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
+	 <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
 	</include>
 	<!--virtual wall map publisher-->
 	<node name="virtual_wall_map_publisher" pkg="ros_map_edit" type="virtual_wall_map_publisher.py">
@@ -34,3 +43,4 @@
 			args="-d $(find bobac3_navigation)/rviz/robot_navigation.rviz"/>
 	</group>
 </launch>
+
